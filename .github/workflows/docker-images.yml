@@ -2,19 +2,17 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ['master']
   pull_request:
-    branches: [ "master" ]
+    branches: ['master']
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the event-aggregator Docker image
-      run: docker build .
-    - name: Build the mock-server Docker image
-      run: docker build ./mock-server/.
+      - uses: actions/checkout@v4
+      - name: Build the event-aggregator Docker image
+        run: docker build .
+      - name: Build the mock-server Docker image
+        run: docker build ./mock-server/.

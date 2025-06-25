@@ -1,7 +1,5 @@
 import { Aggregator } from '../src/aggregator.js';
 
-jest.useFakeTimers();
-
 describe('Aggregator', () => {
   const intervalMs = 5000;
   let onAggregateMock;
@@ -89,7 +87,10 @@ describe('Aggregator', () => {
   });
 
   it('should handle multiple events for the same serialno', () => {
-    const event1 = { time: Date.now() - 200, data: { serialno: '123', value: 10 } };
+    const event1 = {
+      time: Date.now() - 200,
+      data: { serialno: '123', value: 10 },
+    };
     const event2 = {
       time: Date.now() - 100,
       data: { serialno: '123', value: 20 },

@@ -13,6 +13,6 @@ FROM gcr.io/distroless/base-debian10 AS runtime
 
 COPY --from=builder /server /server
 
-EXPOSE 9099
+EXPOSE 9000
 
 ENTRYPOINT ["/server"]

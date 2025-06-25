@@ -31,7 +31,6 @@ func main() {
 	}
 
 	http.Handle("/", webSocketHandler)
-	http.HandleFunc("/health", healthCheckHandler)
 
 	log.Printf("WebSocket server listening on %s\n", listenAddr)
 	log.Fatal(http.ListenAndServe(listenAddr, nil))

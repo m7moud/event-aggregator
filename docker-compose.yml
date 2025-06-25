@@ -8,9 +8,9 @@ services:
       context: ./mock-server/
       dockerfile: Dockerfile
     ports:
-      - '9099:9099'
+      - '9000:9000'
     environment:
-      WS_ADDR: ':9099'
+      WS_ADDR: ':9000'
     networks:
       - wsnet
     restart: unless-stopped
@@ -24,6 +24,6 @@ services:
     networks:
       - wsnet
     environment:
-      ORIGIN_SERVICE_URL: ws://mock-server:9099
+      ORIGIN_SERVICE_URL: ws://mock-server:9000
       DEBUG_LOGGING: 'true'
     restart: unless-stopped

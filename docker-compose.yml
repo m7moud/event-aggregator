@@ -1,0 +1,29 @@
+networks:
+  wsnet:
+    driver: bridge
+
+services:
+  mock-server:
+    build:
+      context: ./mock-server/
+      dockerfile: Dockerfile
+    ports:
+      - '9099:9099'
+    environment:
+      WS_ADDR: ':9099'
+    networks:
+      - wsnet
+    restart: unless-stopped
+
+  node-aggregator:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    networks:
+      - wsnet
+    environment:
+      ORIGIN_SERVICE_URL: ws://mock-server:9099
+      DEBUG_LOGGING: 'true'
+    restart: unless-stopped
